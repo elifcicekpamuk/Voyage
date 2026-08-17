@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: voya-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: voya
+      POSTGRES_PASSWORD: voya
+      POSTGRES_DB: voya
+    ports:
+      - "5432:5432"
+    volumes:
+      - voya_pgdata:/var/lib/postgresql/data
+
+volumes:
+  voya_pgdata:
